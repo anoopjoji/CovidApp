@@ -1,0 +1,14 @@
+const express = require("express")
+const patientModels = require("../models/patientModels")
+const routers = express.Router()
+
+
+routers.post("/add", async (req, res) => {
+    let data = req.body
+    let patients = new patientModels(data)
+    let results = await patients.save()
+    res.json({ status: "success" })
+})
+
+
+module.exports = routers
